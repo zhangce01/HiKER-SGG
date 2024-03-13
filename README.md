@@ -47,7 +47,7 @@ Note that for the PredCls task, we start training from the GB-Net checkpoint; an
 
 In our paper, we introduce a new synthetic VG-C benchmark for SGG, containing 20 challenging image corruptions, including simple transformations and severe weather conditions.
 
-![](fig/example2.png)
+![](fig/corruption.png)
 
 We include the code for generating these 20 corruptions in ``dataloaders/corruptions.py``. To use it, you also need to modify the codes in ``dataloaders/visual_genome.py``, and also enable ``-test_n`` in the evaluation notebook file.
 
