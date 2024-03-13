@@ -1,77 +1,74 @@
-# Graph Bridging Network (GB-Net)
-Code for the ECCV 2020 paper: [Bridging Knowledge Graphs to Generate Scene Graphs](https://arxiv.org/pdf/2001.02314.pdf)
-```
-@InProceedings{Zareian_2020_ECCV,
-author = {Zareian, Alireza and Karaman, Svebor and Chang, Shih-Fu},
-title = {Bridging Knowledge Graphs to Generate Scene Graphs},
-booktitle = {Proceedings of the European conference on computer vision (ECCV)},
-month = {August},
-year = {2020}
+# [CVPR 2024] HiKER-SGG
+
+## 👀Introduction
+
+This repository contains the code for our CVPR 2024 paper `HiKER-SGG: Hierarchical Knowledge Enhanced Robust Scene Graph Generation`.
+
+![](fig/hikersgg.png)
+
+## 💡Environment
+
+We test our codebase with PyTorch 1.12.0 with CUDA 11.6. Please install corresponding PyTorch and CUDA versions according to your computational resources.
+
+Then install the rest of required packages by running `pip install -r requirements.txt`. This includes jupyter, as you need it to run the notebooks.
+
+## ⏳Setup
+
+We use the [Visual Genome](https://homes.cs.washington.edu/~ranjay/visualgenome/index.html) dataset in this work, which consists of 108,077 images, each annotated with objects and relations. Following [previous work](https://arxiv.org/pdf/1701.02426.pdf), we filter the dataset to use the most frequent 150 object classes and 50 predicate classes for experiments.
+
+You can download the images here, then extract the two zip files and put all the images in a single folder:
+
+Part I: https://cs.stanford.edu/people/rak248/VG_100K_2/images.zip
+
+Part II: https://cs.stanford.edu/people/rak248/VG_100K_2/images2.zip
+
+Then download VG metadata preprocessed by [IMP](https://arxiv.org/abs/1701.02426): [annotations](http://svl.stanford.edu/projects/scene-graph/dataset/VG-SGG.h5), [class info](http://svl.stanford.edu/projects/scene-graph/dataset/VG-SGG-dicts.json),and [image metadata](http://svl.stanford.edu/projects/scene-graph/VG/image_data.json) and copy those three files in a single folder.
+
+Finally, update `config.py` to with a path to the aforementioned data, as well as the absolute path to this directory.
+
+We also provide two pre-trained weights:
+
+1. The pre-trained Faster-RCNN checkpoint trained by [MotifNet](https://arxiv.org/pdf/1711.06640.pdf) from https://www.dropbox.com/s/cfyqhskypu7tp0q/vg-24.tar?dl=0 and place in `checkpoints/vgdet/vg-24`.
+
+2. The pre-trained GB-Net checkpoint ``vgrel-11`` from https://github.com/alirezazareian/gbnet and place in `checkpoints/vgdet/vgrel-11`.
+
+If you want to train from scratch, you can pre-train the model using Faster-RCNN checkpoint. However, we recommend to train from the GB-Net checkpoint.
+
+## 📦Usage
+
+You can simply follow the instructions in the notebooks to run HiKER-SGG experiments:
+
+1. For the PredCls task: ``train: ipynb/train_predcls/hikersgg_predcls_train.ipynb``, ``evaluate: ipynb/eval_predcls/hikersgg_predcls_test.ipynb``.
+2. For the SGCls task: ``train: ipynb/train_sgcls/hikersgg_sgcls_train.ipynb``, ``evaluate: ipynb/eval_sgcls/hikersgg_sgcls_train.ipynb``.
+
+Note that for the PredCls task, we start training from the GB-Net checkpoint; and for the SGCls task, we start training from the best PredCls checkpoint.
+
+## 📈VG-C Benchmark
+
+In our paper, we introduce a new synthetic VG-C benchmark for SGG, containing 20 challenging image corruptions, including simple transformations and severe weather conditions.
+
+![](fig/example2.png)
+
+We include the code for generating these 20 corruptions in ``dataloaders/corruptions.py``. To use it, you also need to modify the codes in ``dataloaders/visual_genome.py``, and also enable ``-test_n`` in the evaluation notebook file.
+
+## 🙏Acknowledgements
+
+Our codebase is adapted from [GB-Net](https://github.com/alirezazareian/gbnet) and [EB-Net](https://github.com/zhanwenchen/eoa). We thank the authors for releasing their code!
+
+## 📧Contact
+
+If you have any questions, please  contact at [cezhang@cs.cmu.edu](mailto:cezhang@cs.cmu.edu).
+
+## 📌 BibTeX & Citation
+
+If you find this code useful, please consider citing our work:
+
+```bibtex
+@inproceedings{zhang2024hikersgg,
+  title={HiKER-SGG: Hierarchical Knowledge Enhanced Robust Scene Graph Generation},
+  author={Zhang, Ce and Stepputtis, Simon and Campbell, Joseph and Sycara, Katia and Xie, Yaqi},
+  booktitle={IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year={2024}
 }
 ```
 
-Instructions to reproduce all numbers in table 1 and table 2 of our paper:
-
-First, download and unpack Visual Genome images: [part 2](https://cs.stanford.edu/people/rak248/VG_100K_2/images.zip) and [part 2](https://cs.stanford.edu/people/rak248/VG_100K_2/images2.zip)
-
-Extract these two zip files and put the images in the same folder.
-
-Then download VG metadata preprocessed by \[37\]: [annotations](http://svl.stanford.edu/projects/scene-graph/dataset/VG-SGG.h5), [class info](http://svl.stanford.edu/projects/scene-graph/dataset/VG-SGG-dicts.json),and [image metadata](http://svl.stanford.edu/projects/scene-graph/VG/image_data.json)
-
-Copy those three files in a single folder
-
-Then update `config.py` to with a path to the aforementioned data, as well as the absolute path to this directory.
-
-Now download the pretrained faster r-cnn checkpoint trained by [42] from https://www.dropbox.com/s/cfyqhskypu7tp0q/vg-24.tar?dl=0 and place in `checkpoints/vgdet`
-
-The next step is to configure a python environment and install pytorch. To do that, first make sure CUDA 9 is installed, and then download https://download.pytorch.org/whl/cu90/torch-0.3.0.post4-cp36-cp36m-linux_x86_64.whl and pip install the downloaded `whl` file. Then install the rest of required packages by running `pip install -r requirements.txt`. This includes jupyter, as you need it to run the notebooks.
-
-Finally, run the following to produce numbers for each table (In some cases order matters):
-```
-Table 1, Column 8, Rows 17-24: train: ipynb/train_predcls/0045.ipynb, evaluate: ipynb/eval_predcls/0011.ipynb
-Table 1, Column 8, Rows 9-16: train: ipynb/train_sgcls/0051.ipynb, evaluate: ipynb/eval_sgcls/0015.ipynb
-Table 1, Column 8, Rows 1-8: train: ipynb/train_predcls/0132.ipynb, evaluate: ipynb/eval_sgdet/0027.ipynb
-
-Table 1, Column 9, Rows 17-24: train: ipynb/train_predcls/0135.ipynb, evaluate: ipynb/eval_predcls/0025.ipynb
-Table 1, Column 9, Rows 9-16: train: ipynb/train_sgcls/0145.ipynb, evaluate: ipynb/eval_sgcls/0039.ipynb
-Table 1, Column 9, Rows 1-8: train: ipynb/train_predcls/0135.ipynb, evaluate: ipynb/eval_sgdet/0035.ipynb
-
-Table 2, Row 1, Columns 6-9: train: ipynb/train_predcls/0140.ipynb, evaluate: ipynb/eval_predcls/0030.ipynb
-Table 2, Row 1, Columns 2-5: train: ipynb/train_predcls/0140.ipynb, evaluate: ipynb/eval_sgdet/0028.ipynb
-
-Table 2, Row 2, Columns 6-9: train: ipynb/train_predcls/0134.ipynb, evaluate: ipynb/eval_predcls/0024.ipynb
-Table 2, Row 2, Columns 2-5: train: ipynb/train_predcls/0134.ipynb, evaluate: ipynb/eval_sgdet/0034.ipynb
-
-Table 2, Row 3, Columns 6-9: train: ipynb/train_predcls/0136.ipynb, evaluate: ipynb/eval_predcls/0026.ipynb
-Table 2, Row 3, Columns 2-5: train: ipynb/train_predcls/0136.ipynb, evaluate: ipynb/eval_sgdet/0036.ipynb
-
-Table 2, Row 4, Columns 6-9: train: ipynb/train_predcls/0132.ipynb, evaluate: ipynb/eval_predcls/0022.ipynb
-Table 2, Row 4, Columns 2-5: train: ipynb/train_predcls/0132.ipynb, evaluate: ipynb/eval_sgdet/0027.ipynb
-```
-
-Moreover, SGCls results for table 2, which is missing from the paper due to space constraint, can be produced by:
-```
-Row 1: train: ipynb/train_predcls/0150.ipynb, evaluate: ipynb/eval_predcls/0041.ipynb
-Row 2: train: ipynb/train_predcls/0144.ipynb, evaluate: ipynb/eval_predcls/0038.ipynb
-Row 3: train: ipynb/train_predcls/0146.ipynb, evaluate: ipynb/eval_predcls/0040.ipynb
-Row 4: train: ipynb/train_predcls/0142.ipynb, evaluate: ipynb/eval_predcls/0037.ipynb
-```
-
-To skip training, you may download all our pretrained checkpoints from [here](https://www.dropbox.com/sh/r62mzgsg1f81776/AAAQKzPD8qJrBYeYzNHJ0p5Xa?dl=0) and place in the `checkpoints/` folder. Then you only need to run notebooks in `ipynb/eval_...`
-
-If GPU is not available, to skip deploying the model altogether, you may download our pre-computed model outputs from [here](https://www.dropbox.com/sh/rbnkcnfh0bmw08m/AACVBegZ14YGG9XwcsmJFxFua?dl=0) and place in the `caches/` folder. Then if you run any notebook in `ipynb/eval_...`, it automatically uses the cached results and does not deploy the model. Note that there is no need to run the cell that creates the model (`detector = ...`) as well as the next one that transfers it to cuda (`detector.cuda()`) and the next one that loads the checkpoint (`ckpt = ...`). Only run the rest of the cells.
-
-Finally, to avoid running the code, you may just open the notebooks in `ipynb/eval_...` and scroll down to see the evaluation results.
-
-Note if you get cuda-related errors, it might be due to the cuda compatibility options that were used to compile this library. In that case, you need to change the compatibility in `lib/fpn/nms/src/cuda/Makefile` and `lib/fpn/roi_align/src/cuda/Makefile` and rebuild both by running make clean and then make in both directories. 
-Also note that pytorch 0.3.0 only has pre-built binaries for up to cuda 9. In order to run this with cuda 10 and newer GPUs, you need to build pytorch from source.
-
-Acknowledgement: This repository is based on our references [\[1\]](https://github.com/yuweihao/KERN) and [\[42\]](https://github.com/rowanz/neural-motifs)
-
-[1] Chen, Tianshui, et al. "Knowledge-Embedded Routing Network for Scene Graph Generation." Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2019.
-
-[37] Xu, Danfei, et al. "Scene graph generation by iterative message passing." Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2017.
-
-[42] Zellers, Rowan, et al. "Neural motifs: Scene graph parsing with global context." Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2018.
-
-Created and maintained by [Alireza Zareian](https://www.linkedin.com/in/az2407/) at [DVMM](http://www.ee.columbia.edu/ln/dvmm/) - Columbia University.
