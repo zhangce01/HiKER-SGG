@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
+  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+
+  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>BDC-Adapter: Brownian Distance Covariance for Better Vision-Language Reasoning</title>
+  <link rel="icon" type="image/x-icon" href="static/images/logo.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">HiKER-SGG: Hierarchical Knowledge Enhanced Robust Scene Graph Generation</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+                <span class="author-block">
+                  <a href="https://zhangce01.github.io/" target="_blank">Ce Zhang</a>,</span>
+                  <span class="author-block">
+                     <a href="https://simonstepputtis.com/" target="_blank">Simon Stepputtis</a>,</span>
+                     <span class="author-block">
+                       <a href="https://joe-campbell.github.io/website/" target="_blank">Joseph Campbell</a>,</span>
+                       <span class="author-block">
+                    <a href="https://scholar.google.com/citations?user=VWv6a9kAAAAJ&hl=en" target="_blank">Katia Sycara</a>,
+                  </span>
+                  <span class="author-block">
+                    <a href="https://yaqi-xie.me/" target="_blank">Yaqi Xie</a>
+                  </span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <span class="author-block">School of Computer Science, Carnegie Mellon University<br><b>CVPR 2024</b></span>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+
+                    <!-- PDF link -->
+                    <span class="link-block">
+                      <a href="static/pdfs/CVPR_2024_HiKER_SGG.pdf" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Paper</span>
+                    </a>
+                  </span>
+
+                <!-- ArXiv abstract Link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/1111.11111" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+              <!-- Github link -->
+              <span class="link-block">
+                <a href="https://github.com/zhangce01/HiKER-SGG" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Code</span>
+              </a>
+              </span>
+              <figure>
+                <br>
+                <img src="static/images/hikersgg.png" alt="fail" width="100%"">
+                <figcaption class="content has-text-left"  style="word-break:normal"><b>Figure 1. HiKER-SGG Overview.</b>
+                  Hierarchical knowledge graphs are constructed from an external knowledge base. Given an image, we first initialize the scene graph using an off-the-shelf detector, Faster-RCNN. We then create bridging connections between the hierarchical knowledge graph and the initial scene graph and perform message passing for hierarchical graph reasoning. Finally, we design a hierarchical inference process to guide the model in making step-by-step predictions.</figcaption>
+              </figure>
+              <figure>
+                <br>
+                <img src="static/images/hierarchy.png" alt="fail" width="100%"">
+                <figcaption class="content has-text-left"  style="word-break:normal"><b>Figure 2. The visualization of the discovered hierarchies on the Visual Genome dataset.</b>
+                  <b>Left</b>: the discovered hierarchy for 50 predicate classes; <b>Right</b>: the discovered hierarchy for 150 entity classes. In this work, we simply utilize 3-level hierarchies for the hierarchical inference process.
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Paper motivation -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Highlights</h2>
+        <div class="content has-text-justified">
+          <p>
+            <ul>
+              <li>We propose HiKER-SGG, a novel method for generating scene graphs through a hierarchical inference approach over structured domain knowledge, allowing it to gradually specify increasingly granular classifications through iterative sub-selection.</li>
+              <li>We introduce a new synthetic VG-C benchmark for SGG, containing 20 challenging image corruptions, including simple transformations and severe weather conditions.</li>
+              <li>Extensive experiments demonstrate that HiKER-SGG outperforms current state-of-the-art methods on SGG tasks, while simultaneously providing a strong zero-shot baseline for generating scene graphs from corrupted images.</li>
+            </ul>
+          </p>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+<!-- Paper abstract -->
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Being able to understand visual scenes is a precursor for many downstream tasks, including autonomous driving, robotics, and other vision-based approaches.
+            A common approach enabling the ability to reason over visual data is Scene Graph Generation (SGG); however, many existing approaches assume undisturbed vision, i.e., the absence of real-world corruptions such as fog, snow, smoke, as well as non-uniform perturbations like sun glare or water drops.
+            In this work, we propose a novel SGG benchmark containing procedurally generated weather corruptions and other transformations over the Visual Genome dataset. Further, we introduce a corresponding approach, Hierarchical Knowledge Enhanced Robust Scene Graph Generation (HiKER-SGG), providing a strong baseline for scene graph generation under such challenging setting.
+            At its core, HiKER-SGG utilizes a hierarchical knowledge graph in order to refine its predictions from coarse initial estimates to detailed predictions.
+            In our extensive experiments, we show that HiKER-SGG does not only demonstrate superior performance on corrupted images in a zero-shot manner, but also outperforms current state-of-the-art methods on uncorrupted SGG tasks.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<!-- Paper motivation -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">VG-C Benchmark</h2>
+        <div class="content has-text-justified">
+          <p>
+            To standardize and evaluate SGG robustness, we create a corrupted Visual Genome (VG-C) benchmark, which comprises 20 corruption types designed to simulate realistic corruptions that may occur in real-world scenarios. Specifically, the first 15 types of corruption introduced by ImageNet-C are widely recognized as standard benchmarks for evaluating robustness. To further align with real-world scenarios, we introduce 5 additional types of natural corruption to our evaluation: sun glare, water-drop, wildfire smoke, rain, and dust.
+          </p>
+        </div>
+        <figure>
+          <img src="static/images/corruption.png" alt="fail" width="100%"">
+          <figcaption class="content has-text-left"  style="word-break:normal"><b>Figure 3. All the 20 corruption types we used in our corrupted experiments.</b>
+            The first 15 types of corruption are introduced by ImageNet-C, and we introduce 5 additional types of natural corruptions for a more comprehensive and practical evaluation.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Experimental Results</h2>
+
+        <div class="content has-text-left is-size-5">
+        <strong>Results on Clean VG Dataset</strong>
+        </div>
+        <figure>
+          <img src="static/images/clean_result.png" alt="fail" width="100%"">
+          <figcaption class="content has-text-left" style="word-break:normal"><b>Table 1. Performance comparison with the state-of-the-art SGG methods on the Visual Genome dataset.</b> The best results for each metric are in <b>bold</b>, while the second-best results are <u>underlined</u>. "-" denotes unavailable results due to incompatible experimental settings.
+        </figure>
+        <br>
+        <div class="content has-text-left is-size-5">
+          <strong>Results on Corrupted VG-C Dataset</strong>
+        </div>
+        <figure>
+          <img src="static/images/corrupted_result.png" alt="fail" width="100%">
+          <figcaption class="content has-text-left" style="word-break:normal">
+            <b>Table 2. Performance comparison with the state-of-the-art SGG methods for the PredCls task on the corrupted Visual Genome  dataset.</b>
+            We report the accuracy in percentage for the mR@20: UC/C, mR@50: UC/C, mR@100: UC/C metrics, structured in six rows. The best results for each metric are in <b>bold</b>. The last column reports the average mean recall across all 20 types of corruption, and the percentage decrease in <p style="color: rgb(51,125,180); display: inline;">blue</p> when compared to the mean recall on clean images. <sup>&dagger;</sup>We evaluate these methods using the codes provided by the authors.
+          </figure>
+        <br>
+        <div class="content has-text-left is-size-5">
+          <strong>Qualitative Comparison</strong>
+        </div>
+        <figure>
+          <img src="static/images/qualitative.png" alt="fail" width="100%">
+          <figcaption class="content has-text-left" style="word-break:normal">
+            <b>Figure 4. Qualitative comparisons on the PredCls task.</b>
+            The visualized predicted predicates are picked from the top 50 predicted triplets. Here, <p style="color: rgb(255,171,171); display: inline;">red</p> dashed lines denote undetected predicates, solid <p style="color: rgb(255,171,171); display: inline;">red</p> lines denote incorrect predictions, and solid <p style="color: rgb(169,209,142); display: inline;">green</p> lines indicate correct predictions. For an easier comparison, predicates correctly predicted by our method but incorrectly by GB-Net are highlighted in <p style="color: rgb(0,176,80); display: inline;">dark green</p>.
+          </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered" >
+      <div class="column is-four-fifths" style="width:100%">
+        <h2 class="title is 5">Video Demonstration</h2>
+        <div class="content has-text-centered" style="word-break:normal" >
+          <p>
+            Video demonstration coming soon.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@inproceedings{zhang2024hikersgg,
+  title={HiKER-SGG: Hierarchical Knowledge Enhanced Robust Scene Graph Generation},
+  author={Zhang, Ce and Stepputtis, Simon and Campbell, Joseph and Sycara, Katia and Xie, Yaqi},
+  booktitle={IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year={2024}
+}</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
