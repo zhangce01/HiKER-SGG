@@ -1,8 +1,10 @@
 # [CVPR 2024] HiKER-SGG
 
+[![arXiv](https://img.shields.io/badge/arXiv-2403.12033-b31b1b.svg)](https://arxiv.org/abs/2403.12033)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## 👀Introduction
 
-This repository contains the code for our CVPR 2024 paper `HiKER-SGG: Hierarchical Knowledge Enhanced Robust Scene Graph Generation`.
+This repository contains the code for our CVPR 2024 paper `HiKER-SGG: Hierarchical Knowledge Enhanced Robust Scene Graph Generation`. [[Paper](https://arxiv.org/abs/2403.12033)] [[Website](https://zhangce01.github.io/HiKER-SGG/)]
 
 ![](fig/hikersgg.png)
 
