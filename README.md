@@ -66,10 +66,11 @@ If you have any questions, please  contact at [cezhang@cs.cmu.edu](mailto:cezhan
 If you find this code useful, please consider citing our work:
 
 ```bibtex
-@inproceedings{zhang2024hikersgg,
+@inproceedings{zhang2024hiker,
   title={HiKER-SGG: Hierarchical Knowledge Enhanced Robust Scene Graph Generation},
   author={Zhang, Ce and Stepputtis, Simon and Campbell, Joseph and Sycara, Katia and Xie, Yaqi},
-  booktitle={IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={28233--28243},
   year={2024}
 }
 ```
